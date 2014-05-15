@@ -27,10 +27,17 @@
         <td>
           <form method="post" action="{% url 'user_sessions:session_delete' object.pk %}">
             {% csrf_token %}
-            <button type="submit" class="btn btn-xs btn-danger">{% trans "End Session" %}</button>
+            <button type="submit" class="btn btn-xs btn-warning">{% trans "End Session" %}</button>
           </form>
         </td>
       </tr>
     {% endfor %}
   </table>
+
+  <form method="post" action="{% url 'user_sessions:session_delete_other' %}">
+    {% csrf_token %}
+    <p>{% blocktrans %}You can also end all other sessions but the current.
+      This will log you out on all other devices.{% endblocktrans %}</p>
+    <button type="submit" class="btn btn-default btn-warning">{% trans "End All Other Sessions" %}</button>
+  </form>
 {% endblock %}

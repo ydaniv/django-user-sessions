@@ -16,4 +16,9 @@ urlpatterns = patterns(
         view=SessionDeleteView.as_view(),
         name='session_delete',
     ),
+    url(
+        regex=r'^account/sessions/other/delete/$',
+        view=SessionDeleteView.as_view(),
+        name='session_delete_other',
+    ),
 )
